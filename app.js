@@ -2,7 +2,9 @@
 let express = require('express')
 let cors = require('cors')
 let bodyParser = require('body-parser')
+
 let jwt = require("jsonwebtoken")
+
 let banner = require("./banner")
 
 // 拿到服务器
@@ -37,7 +39,6 @@ app.post('/validate',function(req,res){
 })
 
 // get 和 delete 方式请求
-
 // 参数：路径 回调函数（成功数据，失败数据）
 app.get('/banner',function(req,res){
     console.log(req.query.id)

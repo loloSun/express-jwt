@@ -27,7 +27,7 @@ node的框架
   npm install nodemon -g
   ```
 
-- 中间件 官方文档 资源 中间件
+## 中间件 官方文档 资源 中间件
   - express 里中间件都是函数
   - 中间件使用 都是 app.use()
   - cors 中间件 跨域 
@@ -47,26 +47,39 @@ node的框架
       bodyParser.json
     - 发送请求的数据格式
       www-form-urlencoded  form-data  application/json
-
-- 持久化登录 jwt json web token
-  - 原理：第一次登陆的是会返回一个经过加密的token，下一次访问接口（携带登录返回你的token）的时候，会对token进行解密，如果解密正在进行你已经登录，再把过期时间延长
-
-      axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded'
-      原生js设置请求头
-        xml.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
-        允许携带cookie
-          xml.withCredentials = true
-      axios的实例 设置请求头
-        const instance = axios.create({
-          withCredentials:true,
-          headers:{'Content-Type':'application/x-www-form-urlencoded'}
-        })
-
-- 静态文件中间件 express内置的
+  - 静态文件中间件 express内置的
+    ```
     app.use(express.static('public'))
+    ```
     public表示文件夹会自动使用pulic下的文件
     静态文件包括 css js html img 等
-    app.use(express.static(__dirname)) __dirname 绝对路径
+    ```
+    app.use(express.static(__dirname)) // __dirname 绝对路径
+    ```
+## 持久化登录 jwt json web token
+  - 原理：第一次登陆时会返回一个经过加密的token，下一次访问接口（携带登录返回你的token）的时候，会对token进行解密，如果解密正在进行，说明你已经登录，再把过期时间延长
+
+
+  
+    ```
+    axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded'
+    ```
+    原生js设置请求头
+    ```
+    xml.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+    ```
+    允许携带cookie
+    ```
+    xml.withCredentials = true
+    ```
+    axios的实例 设置请求头
+    ```
+    const instance = axios.create({
+      withCredentials:true,
+      headers:{'Content-Type':'application/x-www-form-urlencoded'}
+    })
+    ```
+
 
 
   

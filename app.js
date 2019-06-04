@@ -28,11 +28,12 @@ app.post('/validate',function(req,res){
         }else {
             // 证明用户已经登录
             res.json({
-                username:decode.username
+                username:decode.username,
+                msg:'已登录'
             })
             token:jwt.sign({username:decode.username},'abcd',{
                 // 过期时间
-                expiresIn:"1s"
+                expiresIn:"1h"
             })
         }
     })
@@ -57,15 +58,15 @@ app.post('/a',function(req,res){
 })
 
 // 模拟一个登陆的接口
-app.post('/token',function(req,res){
+app.post('/login',function(req,res){
     let {username} = req.body
-    // console.log(username)
+    console.log(username)
     res.json({
         // 进行加密的方法
         // sing 参数一：加密的对象 参数二：加密的规则 参数三：对象
         token:jwt.sign({username:username},'abcd',{
             // 过期时间
-            expiresIn:"1s"
+            expiresIn:"1h"
         }),
         username,
         code:200
